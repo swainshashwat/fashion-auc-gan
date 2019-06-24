@@ -205,7 +205,7 @@ class ACGAN():
 
             # Plot the progress
             print("%d [D loss: %f, acc.: %.2f%%, op_acc: %.2f%%]\
-                      [G loss: %f" 
+                [G loss: %f"]
                       % (epoch, d_loss[0], 100*d_loss[3], 100*d_loss[4],\
                          g_loss[0]))
 
@@ -214,7 +214,7 @@ class ACGAN():
                 self.save_model() # save model weights
                 self.sample_images(epoch)
 
-    def samples_images(self, epoch):
+    def sample_images(self, epoch):
         r, c = 10, 10
         noise = np.random.normal(0, 1, (r * c, 100))
         sampled_labels = np.array([num for _ in range(r)\
@@ -224,7 +224,7 @@ class ACGAN():
         # rescale images 0-1
         gen_imgs = 0.5 * gen_imgs + 0.5
 
-        fig, axs = plt.subplots(r, c)
+        fig, axs = plt.subplots(r, c, figsize=(32, 20))
         cnt = 0
         for i in range(r):
             for j in range(c):
